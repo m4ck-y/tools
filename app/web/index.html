@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banpay Tools - Encrypt/Decrypt</title>
+    <link rel="stylesheet" href="/web/styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Global Key Section -->
+        <div class="card">
+            <h2>Configuración</h2>
+            <div class="form-group">
+                <label for="globalKey">AES Key (Base64)</label>
+                <input type="text" id="globalKey" placeholder="Ingrese su key en Base64..." value="">
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+
+            <!-- Encrypt Section -->
+            <div class="card" style="flex: 1; min-width: 300px;">
+                <h2>Encriptar</h2>
+
+                <div class="form-group">
+                    <div class="toggle-container">
+                        <label for="encryptInput" style="margin:0">Datos a encriptar</label>
+                        <div style="flex-grow:1"></div>
+                        <input type="checkbox" id="isJsonToggle">
+                        <label for="isJsonToggle" style="margin:0; font-size: 0.9rem; cursor:pointer">Es JSON</label>
+                    </div>
+                    <textarea id="encryptInput" placeholder="Ingrese texto o JSON..."></textarea>
+
+                    <!-- Prettified JSON Preview -->
+                    <div id="jsonPreview" class="json-preview"></div>
+                    <div class="error-msg" id="jsonError">JSON Inválido</div>
+                </div>
+
+                <button onclick="handleEncrypt()">ENCRIPTAR</button>
+
+                <div id="encryptResult" class="result-box"></div>
+            </div>
+
+            <!-- Decrypt Section -->
+            <div class="card" style="flex: 1; min-width: 300px;">
+                <h2>Desencriptar</h2>
+                <div class="form-group">
+                    <label for="decryptInput">Texto Cifrado (IV::Payload)</label>
+                    <textarea id="decryptInput" placeholder="Pegue la cadena encriptada aquí..."></textarea>
+                </div>
+
+                <button onclick="handleDecrypt()">DESENCRIPTAR</button>
+
+                <div id="decryptResult" class="result-box"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/web/script.js"></script>
+</body>
+
+</html>
